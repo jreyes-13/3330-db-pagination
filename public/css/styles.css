@@ -1,0 +1,42 @@
+body {
+    font-family: Arial;
+    margin: 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #eee;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 8px 14px;
+    margin: 3px;
+    text-decoration: none;
+    background: #eee;
+    color: black;
+    border-radius: 4px;
+}
+
+.pagination a.active {
+    background: #007bff;
+    color: white;
+}
+
+.pagination a.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}

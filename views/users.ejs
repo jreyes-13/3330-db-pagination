@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers Pagination</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h2>Customers List</h2>
+    <p>
+        Total Customers: 
+        <% if (locals.totalCustomers) {%>
+            <%= totalCustomers %>
+        <% } else { %>
+            -1
+        <% } %>
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (locals.customers) {%>
+                <% customers.forEach(customer => { %>
+                    <tr>
+                        <td><%= customer.id %></td>
+                        <td><%= customer.name %></td>
+                        <td><%= customer.phone %></td>
+                        <td><%= customer.email %></td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                    <tr>
+                        <td> - </td>
+                        <td> - </td>
+                        <td> - </td>
+                        <td> - </td>
+                    </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <div class="pagination">
+        <% if (locals.currentPage) {%>
+            <a href="/customers?page=<%= currentPage - 1 %>" class="<%= currentPage === 1 ? 'disabled' : '' %>">
+                Previous
+            </a>
+            <% for(let i = 1; i <= totalPages; i++) { %>
+                <a href="/customers?page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>">
+                    <%= i %>
+                </a>
+            <% } %>
+            <a href="/customers?page=<%= currentPage + 1 %>" class="<%= currentPage === totalPages ? 'disabled' : '' %>">
+                Next
+            </a>
+        <% } %>
+    </div>    
+</body>
+</html>
